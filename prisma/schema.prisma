@@ -1,0 +1,79 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+enum Role {
+  ADMIN
+  KASIR
+  PEMBELI
+}
+
+enum Status {
+  MenungguPembayaran @map("Menunggu Pembayaran")
+  MenungguKonfirmasi @map("Menunggu Konfirmasi")
+  Dikonfirmasi
+  Dibayar
+  Gagal
+}
+ 
+model User {
+  id         String      @id @default(cuid())
+  username   String?     @unique
+  image      String?
+  password   String?     @map("hashed_password")
+  role       Role        @default(PEMBELI)
+  penjualan  Penjualan[] 
+
+  @@map("users")
+}
+
+model Menu {
+  id        String            @id @default(cuid())
+  name      String
+  price     Int
+  stok      Int
+  image     String
+  penjualan DetailPenjualan[] 
+  createdAt DateTime          @default(now())
+  updatedAt DateTime          @updatedAt
+
+  @@map("menu")
+}
+
+model Penjualan {
+  id         String             @id @default(uuid())
+  tanggal    DateTime           @default(now())
+  totalHarga Int
+  userId     String
+  user       User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  detail     DetailPenjualan[]  
+  status     Status             @default(Dikonfirmasi)
+  createdAt  DateTime           @default(now())
+  updatedAt  DateTime           @updatedAt
+}
+
+model DetailPenjualan {
+  id          String     @id @default(uuid())
+  penjualanId String
+  penjualan   Penjualan  @relation(fields: [penjualanId], references: [id], onDelete: Cascade)
+  menuId      String
+  menu        Menu       @relation(fields: [menuId], references: [id], onDelete: Cascade)
+  jumlah      Int
+  subtotal    Int
+
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+}
+
