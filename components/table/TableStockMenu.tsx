@@ -25,7 +25,7 @@ import DeleteButton from "../DeleteButton";
 // Interface
 interface Menu {
   id: string;
-  title: string;
+  name: string;
   price: number;
   stok: number;
   image: string;
@@ -99,11 +99,11 @@ function Row({ row }: { row: Menu }) {
             width={80}
             height={80}
             src={`/images/uploads/${row.image}`}
-            alt={row.title}
+            alt={row.name}
             className="w-16 h-16 object-cover"
           />
         </TableCell>
-        <TableCell>{row.title}</TableCell>
+        <TableCell>{row.name}</TableCell>
         <TableCell>{row.price}</TableCell>
         <TableCell>{row.stok}</TableCell>
         <TableCell>
@@ -158,7 +158,7 @@ function Row({ row }: { row: Menu }) {
                       type="text"
                       name="name"
                       id="name"
-                      defaultValue={row.title}
+                      defaultValue={row.name}
                       className="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                     />
                   </div>

@@ -15,7 +15,7 @@ export async function GET() {
     );
     return {
       id: menu.id,
-      title: menu.name,
+      name: menu.name,
       stok: menu.stok,
       price: menu.price,
       image: menu.image,

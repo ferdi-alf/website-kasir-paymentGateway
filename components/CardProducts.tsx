@@ -8,7 +8,7 @@ interface CardProductsProps {
   price: number;
   image: string;
   totalDibeli?: number;
-  title: string;
+  name: string;
 }
 
 const CardProducts = () => {
@@ -50,13 +50,13 @@ const CardProducts = () => {
                 `/images/uploads/${item.image}` ||
                 "https://via.placeholder.com/300x300.png?text=No+Image"
               }
-              alt={item.title || "No title"}
+              alt={item.name || "No title"}
             />
           </a>
           <div className="px-5 pb-5">
             <a href="#" className="flex flex-nowrap gap-2">
               <h5 className="md:text-lg text-md font-semibold tracking-tight text-gray-900">
-                {item.title}
+                {item.name}
               </h5>
             </a>
             <span className="bg-green-100 text-green-800 text-xs font-medium me-2 p-1 rounded-sm border border-green-400">

@@ -85,7 +85,7 @@ export function DrawerDemo({ order }: { order: Data }) {
             </DrawerDescription>
           </DrawerHeader>
 
-          <div className="space-y-4">
+          <div className="space-y-4 overflow-auto h-56 ">
             {order.detail.map((item) => (
               <div
                 key={item.id}
@@ -125,12 +125,12 @@ export function DrawerDemo({ order }: { order: Data }) {
               })}
             </p>
           </div>
+          {isAdminOrKasir() && (
+            <div className="w-full px-3 flex  justify-center ">
+              <ButtonUpdateStatus api="/api/pesanan/" id={order.id} />
+            </div>
+          )}
         </div>
-        {isAdminOrKasir() && (
-          <div className="w-full px-3 flex justify-center pb-20">
-            <ButtonUpdateStatus api="/api/pesanan/" id={order.id} />
-          </div>
-        )}
       </DrawerContent>
     </Drawer>
   );

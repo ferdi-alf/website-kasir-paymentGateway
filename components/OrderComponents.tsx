@@ -42,11 +42,11 @@ const OrderComponents = () => {
     setSelectedItems((prev) => ({
       ...prev,
       [id]: {
+        id: id,
         count: newCount,
         price: price,
         image: image,
         name: name,
-        id: id,
       },
     }));
 
@@ -82,8 +82,8 @@ const OrderComponents = () => {
       ...prev,
       [id]: {
         ...prev[id],
-        count: newCount,
         id: id,
+        count: newCount,
       },
     }));
   };

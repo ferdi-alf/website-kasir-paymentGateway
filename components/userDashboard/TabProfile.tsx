@@ -23,7 +23,9 @@ const TabProfile = () => {
                 "& .MuiTabs-indicator": {
                   backgroundColor: "green",
                 },
-
+                "& .MuiTab-root": {
+                  color: "black",
+                },
                 "& .Mui-selected": {
                   color: "green",
                 },
