@@ -27,7 +27,7 @@ const TabProfile = () => {
                   color: "black",
                 },
                 "& .Mui-selected": {
-                  color: "green",
+                  color: "black",
                 },
               }}
               onChange={handleChange}

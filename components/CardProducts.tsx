@@ -1,6 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
-import Image from "next/image";
 import { useEffect, useState } from "react";
 
 interface CardProductsProps {
@@ -42,9 +42,7 @@ const CardProducts = () => {
           className="w-full max-w-md bg-white border border-gray-200 rounded-lg shadow-sm"
         >
           <a href="#">
-            <Image
-              width={80}
-              height={80}
+            <img
               className="w-full md:h-60 h-36 object-cover p-3 rounded-t-lg"
               src={
                 `/images/uploads/${item.image}` ||

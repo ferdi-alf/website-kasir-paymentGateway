@@ -163,7 +163,7 @@ const OrderComponents = () => {
                 />
               </div>
 
-              <div className=" ">
+              <div className="w-28 h-28 ">
                 <Image
                   height={80}
                   width={80}
